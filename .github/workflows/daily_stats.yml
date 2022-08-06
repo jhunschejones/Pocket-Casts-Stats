@@ -1,0 +1,28 @@
+name: Daily Stats
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1.1'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Update daily stats
+      run: bundle exec ruby main.rb
+    - name: Commit changes
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git commit README.md -m 'Update daily stats' || echo "No changes to commit"
+        git push origin || echo "No changes to commit"
