@@ -2,8 +2,7 @@ name: Daily Stats
 
 on:
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron: '0 * * * *' # every hour
+    - cron: '45 0,1,2,3,4,5,14,15,16,17,18,19,20,21,22,23 * * *' # 45mins after the hour every hour, 8:45am - 11:45pm CST
   workflow_dispatch:
 
 jobs:
