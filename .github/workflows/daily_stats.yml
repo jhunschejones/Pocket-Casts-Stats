@@ -3,7 +3,7 @@ name: Daily Stats
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '0 14 * * *'
+    - cron: '0 * * * *' # every hour
   workflow_dispatch:
 
 jobs:

@@ -1,6 +1,6 @@
 require "httparty"
-require "pry"
 require "json"
+require "tzinfo"
 
 class PocketCasts
   LOGIN_URL = "https://api.pocketcasts.com/user/login"
@@ -38,7 +38,7 @@ class PocketCasts
   end
 end
 
-todays_file = "./stats/#{Time.now.utc.strftime("%Y-%m-%d")}"
+todays_file = "./stats/#{TZInfo::Timezone.get('US/Central').now.strftime("%Y-%m-%d")}"
 
 File.open(todays_file, "w") do |file|
   file.write(PocketCasts.new.total_seconds_listened)
