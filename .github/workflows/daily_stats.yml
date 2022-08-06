@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-
+  update:
     runs-on: ubuntu-latest
-
+    env: # shared for all steps
+      POCKET_CASTS_PASSWORD: ${{ secrets.POCKET_CASTS_PASSWORD }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
