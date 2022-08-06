@@ -1,5 +1,7 @@
 # Pocket Casts Stats
 
+[![Daily Stats](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml/badge.svg)](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml)
+
 ### Overview
 
 This is a WIP script based off of https://github.com/niklas-heer/pocketcasts-stats/blob/master/app.py that makes a web request to the unofficial pocket casts API in order to get listening time in minutes. This is valuable because the in-app tracker eventually rounds up to "days" which is not helpful for daily tracking.
