@@ -9,8 +9,6 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    container:
-      - options: --user root
     env: # shared for all steps
       POCKET_CASTS_PASSWORD: ${{ secrets.POCKET_CASTS_PASSWORD }}
     steps:
