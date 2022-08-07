@@ -23,6 +23,8 @@ class PocketCasts
   private
 
   def token
+    return ENV["POCKET_CASTS_TOKEN"] if ENV["POCKET_CASTS_TOKEN"]
+
     @token ||= begin
       raise "No password provided" unless ENV["POCKET_CASTS_PASSWORD"]
       body = {
