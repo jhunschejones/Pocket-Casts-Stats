@@ -2,21 +2,15 @@
   const pocketCasts = {
     dateString: (daysAgo = 0) => {
       const [month, day, year] = (new Date(Date.now() - (daysAgo * 24) * 3600 * 1000))
-        .toLocaleString("en-US", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" })
+        .toLocaleString("en-US", {timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" })
         .split("/");
       return `${year}-${month}-${day}`;
     },
-    statsUrl: (daysAgo = 0) => {
-      return `https://raw.githubusercontent.com/jhunschejones/Pocket-Casts-Stats/main/stats/${pocketCasts.dateString(daysAgo)}`;
-    },
+    statsUrl: (daysAgo = 0) => `https://raw.githubusercontent.com/jhunschejones/Pocket-Casts-Stats/main/stats/${pocketCasts.dateString(daysAgo)}`,
     updateTotals: async () => {
       const dailyTotalTags = document.querySelectorAll(".daily-total");
-      const numberOfDaysToFetch = dailyTotalTags.length + 1;
-      const responses = await Promise.all(
-        [...Array(numberOfDaysToFetch).keys()].map(async (index) => {
-          return fetch(pocketCasts.statsUrl(index));
-        })
-      );
+      const daysAgoToFetch = [...Array(dailyTotalTags.length + 1).keys()];
+      const responses = await Promise.all(daysAgoToFetch.map(async (daysAgo) => fetch(pocketCasts.statsUrl(daysAgo))));
       const totals = await Promise.all(
         responses.map(async (response) => {
           if (!response.ok) {
