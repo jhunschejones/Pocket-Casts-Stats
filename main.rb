@@ -38,7 +38,7 @@ class PocketCasts
   end
 end
 
-todays_file = "./stats/#{TZInfo::Timezone.get('US/Central').now.strftime("%Y-%m-%d")}"
+todays_file = "./stats/#{TZInfo::Timezone.get("America/Chicago").now.strftime("%Y-%m-%d")}"
 
 File.open(todays_file, "w") do |file|
   file.write(PocketCasts.new.total_seconds_listened)
