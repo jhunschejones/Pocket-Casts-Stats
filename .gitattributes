@@ -1,2 +1,3 @@
 # my /docs folder is where the UI lives
 docs/** -linguist-documentation
+docs/** linguist-detectable
