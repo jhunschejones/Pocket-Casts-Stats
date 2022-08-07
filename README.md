@@ -4,6 +4,6 @@
 
 ### Overview
 
-This is a WIP script based off of https://github.com/niklas-heer/pocketcasts-stats/blob/master/app.py that makes a web request to the unofficial pocket casts API in order to get listening time in minutes. This is valuable because the in-app tracker eventually rounds up to "days" which is not helpful for daily tracking.
+Pocket Casts is one of the only podcast tools that tracks user listening stats. Unfortunately, after a while, the in-app tracker eventually rounds up to "hours" as the smallest level of fidelity, and I track minutes for my language learning study. 
 
-`./bin/run` will generate a new file in `/stats/` with the days date and the total number of seconds listened as of the writing. NOTE: since stats cannot be reset without deleting an account, this number always increases and the previous day's number can be subtracted from today's number to get the total time listened today.
+To solve this problem, I built a script _(inspired by https://github.com/niklas-heer/pocketcasts-stats/blob/master/app.py)_ which makes a web request to the unofficial pocket casts API and stores the daily raw listening totals (in seconds) using GitHub Actions. I then built a UI (in `/docs`) that serves an HTML page through GitHub Pages which queries the totals files saved in this repo. The result is I now have a few days of minute-fidelity listening totals that I can add use to update my tracking tools! See the UI in action at https://jhunschejones.github.io/Pocket-Casts-Stats/
