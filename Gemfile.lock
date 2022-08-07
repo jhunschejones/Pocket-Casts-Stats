@@ -8,6 +8,8 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
+    minitest (5.16.2)
+    mocha (1.14.0)
     multi_xml (0.6.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
@@ -19,6 +21,8 @@ PLATFORMS
 
 DEPENDENCIES
   httparty
+  minitest
+  mocha
   tzinfo
 
 BUNDLED WITH

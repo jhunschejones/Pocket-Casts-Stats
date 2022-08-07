@@ -16,31 +16,33 @@ class PocketCasts
       }
       response = HTTParty.post(STATS_URL, body: body, headers: headers)
       raise "Unexpected #{response.code} response" if !response.success?
-      json_response = JSON.parse(response.body)
-      json_response["timeListened"].to_i
+      JSON.parse(response.body)["timeListened"].to_i
     end
   end
 
   private
 
   def token
-    return ENV["POCKET_CASTS_TOKEN"] if ENV["POCKET_CASTS_TOKEN"]
-
     @token ||= begin
-      raise "No password provided" unless ENV["POCKET_CASTS_PASSWORD"]
+      return ENV["POCKET_CASTS_TOKEN"] if ENV["POCKET_CASTS_TOKEN"]
+      raise "Missing credentials" unless ENV["POCKET_CASTS_EMAIL"] && ENV["POCKET_CASTS_PASSWORD"]
+
       body = {
-        email: "joshjones103@gmail.com",
+        email: ENV["POCKET_CASTS_EMAIL"],
         password: ENV["POCKET_CASTS_PASSWORD"],
         scope: "webplayer"
       }
       headers = { "Origin" => "https://play.pocketcasts.com" }
       response = HTTParty.post(LOGIN_URL, body: body, headers: headers)
-      json_response = JSON.parse(response.body)
-      json_response["token"]
+      raise "Unexpected #{response.code} response" if !response.success?
+
+      JSON.parse(response.body)["token"]
     end
   end
 end
 
-todays_file = "./stats/#{TZInfo::Timezone.get("America/Chicago").now.strftime("%Y-%m-%d")}"
-todays_total = PocketCasts.new.total_seconds_listened
-File.open(todays_file, "w") { |file| file.write(todays_total) }
+if __FILE__ == $0
+  todays_file = "./stats/#{TZInfo::Timezone.get("America/Chicago").now.strftime("%Y-%m-%d")}"
+  todays_total = PocketCasts.new.total_seconds_listened
+  File.open(todays_file, "w") { |file| file.write(todays_total) }
+end
