@@ -34,7 +34,7 @@
       }
 
       // simulate long web request
-      await new Promise(r => setTimeout(r, 2000));
+      // await new Promise(r => setTimeout(r, 2000));
 
       const todayResponse = await fetch("https://api.pocketcasts.com/user/stats/summary", {
         method: "post",
