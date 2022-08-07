@@ -15,6 +15,7 @@ class PocketCasts
         "Accept": "*/*",
       }
       response = HTTParty.post(STATS_URL, body: body, headers: headers)
+      raise "Unexpected #{response.code} response" if !response.success?
       json_response = JSON.parse(response.body)
       json_response["timeListened"].to_i
     end
@@ -41,7 +42,5 @@ class PocketCasts
 end
 
 todays_file = "./stats/#{TZInfo::Timezone.get("America/Chicago").now.strftime("%Y-%m-%d")}"
-
-File.open(todays_file, "w") do |file|
-  file.write(PocketCasts.new.total_seconds_listened)
-end
+todays_total = PocketCasts.new.total_seconds_listened
+File.open(todays_file, "w") { |file| file.write(todays_total) }
