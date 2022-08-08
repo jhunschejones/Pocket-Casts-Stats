@@ -1,6 +1,6 @@
 # Pocket Casts Stats
 
-[![Daily Stats](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml/badge.svg)](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml)
+[![Daily Stats Action](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml/badge.svg)](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/daily_stats.yml) &nbsp; [![GH Pages Deployment](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jhunschejones/Pocket-Casts-Stats/actions/workflows/pages/pages-build-deployment)
 
 ### Overview
 
