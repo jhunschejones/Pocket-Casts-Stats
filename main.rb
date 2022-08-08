@@ -12,7 +12,7 @@ class PocketCasts
       headers = {
         "Origin" => "https://play.pocketcasts.com",
         "Authorization" => "Bearer #{token}",
-        "Accept": "*/*",
+        "Accept" => "*/*",
       }
       response = HTTParty.post(STATS_URL, body: body, headers: headers)
       raise "Unexpected #{response.code} response" if !response.success?
