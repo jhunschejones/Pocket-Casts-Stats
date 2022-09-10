@@ -1,8 +1,8 @@
 name: Daily Stats
 
 on:
-  schedule:
-    - cron: '55 0,1,2,3,4,5,15,16,17,18,19,20,21,22,23 * * *' # 55mins after the hour every hour, 9:55am - 11:55pm CST
+#   schedule:
+#     - cron: '55 0,1,2,3,4,5,15,16,17,18,19,20,21,22,23 * * *' # 55mins after the hour every hour, 9:55am - 11:55pm CST
   workflow_dispatch:
 
 jobs:
